@@ -1,25 +1,35 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
 const path = require("path");
+const config = require("config");
 
+// routes
 const items = require("./routes/api/items");
+const users = require("./routes/api/users");
+const auth = require("./routes/api/auth");
+
 const app = express();
 
 // use body-parser middleware
-app.use(bodyParser.json());
+app.use(express.json());
 
 // importing db config
-const dbURI = require("./config/keys").mongoURI;
+const dbURI = config.get("mongoURI");
 
 // connect to Mongo
 mongoose
-  .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(dbURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true
+  })
   .then(() => console.log("MongoDb connected ..."))
   .catch(error => console.log(error));
 
 // use routes
 app.use("/api/items", items);
+app.use("/api/users", users);
+app.use("/api/auth", auth);
 
 // server static assets (build folder) if in production
 if (process.env.NODE_ENV === "production") {
