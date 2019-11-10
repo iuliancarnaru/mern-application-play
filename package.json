@@ -1,0 +1,19 @@
+{
+  "name": "mern_shopping_list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "prod": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "author": "Iulian Carnaru",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.9",
+    "nodemon": "^1.19.4"
+  }
+}
