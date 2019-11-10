@@ -16,6 +16,8 @@ Desktop.ini
 # npm
 node_modules
 /config
+/client/node_modules
+/client/package.json.lock
 package-lock.json
 *.log
 *.gz
